@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const API_KEY = '33615c4f9a4a598689d1024c333138b7-us9';
-const LIST_ID = '07d3345807.';
+const LIST_ID = '07d3345807';
 
 app.post('/submit', async (req, res) => {
   try {
