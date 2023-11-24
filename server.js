@@ -1,34 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mailchimp = require('mailchimp-api-v3');
+const fs = require('fs');
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const API_KEY = '33615c4f9a4a598689d1024c333138b7-us9';
-const LIST_ID = '07d3345807';
+const FILE_PATH = 'data.txt';
 
-app.post('/submit', async (req, res) => {
+app.post('/submit', (req, res) => {
   try {
     const { naam, email } = req.body;
 
-    // Configureer Mailchimp
-    const mailchimpClient = new mailchimp(API_KEY);
+    // Voeg de gegevens toe aan het bestand
+    const data = `${naam}, ${email}\n`;
+    fs.appendFileSync(FILE_PATH, data);
 
-    // Voeg de abonnee toe aan de Mailchimp-lijst
-    const response = await mailchimpClient.post(`/lists/${LIST_ID}/members`, {
-      email_address: email,
-      status: 'subscribed',
-      merge_fields: {
-        FNAME: naam
-      }
-    });
-
-    console.log(response);
-
-    res.status(200).send('Bedankt! We hebben je gegevens goed ontvangen. Succes met de winactie!');
+    res.status(200).send('Bedankt! We hebben je gegevens opgeslagen.');
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal Server Error');
