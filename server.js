@@ -17,7 +17,7 @@ app.post('/submit', (req, res) => {
     const data = `${naam}, ${email}\n`;
     fs.appendFileSync(FILE_PATH, data);
 
-    res.status(200).send('Bedankt! We hebben je gegevens opgeslagen.');
+    res.status(200).send('We willen jou bedanken voor het deelenmen aan onze winactie. Veel succes!');
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal Server Error');
