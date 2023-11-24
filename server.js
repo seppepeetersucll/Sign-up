@@ -7,8 +7,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const API_KEY = '6bb14cc11c993b2523ccbbdda5fa850f-us9';
-const LIST_ID = '07d3345807';
+const API_KEY = '33615c4f9a4a598689d1024c333138b7-us9';
+const LIST_ID = '07d3345807.';
 
 app.post('/submit', async (req, res) => {
   try {
@@ -35,7 +35,7 @@ app.post('/submit', async (req, res) => {
   }
 });
 
-const PORT = 3000;
+const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
