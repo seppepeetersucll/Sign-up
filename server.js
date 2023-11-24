@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const API_KEY = '7ae644e2d66d39a3ee681fbe7620ef19-us9';
+const API_KEY = '6bb14cc11c993b2523ccbbdda5fa850f-us9';
 const LIST_ID = '07d3345807';
 
 app.post('/submit', async (req, res) => {
